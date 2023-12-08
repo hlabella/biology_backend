@@ -32,6 +32,21 @@ docker run -p 8000:8000 biology-api-app-repository
 
 3. Open `https://localhost:8000` in the browser
 
+## Dockerhub Image:
+
+You can pull my image from: https://hub.docker.com/repository/docker/hlabellacosta/biology-api-app-repository/general
+
+```bash
+docker pull hlabellacosta/biology-api-app-repository:latest
+```
+
+Then run the container:
+
+```bash
+docker run -d --name biology-api-app-repository -p 8000:8000 hlabellacosta/biology-api-app-repository:latest
+```
+
+
 ### Accessing the Application
 
 GET /questions endpoint: 
@@ -44,7 +59,17 @@ POST /answer endpoint:
 https://localhost:8000/biology_api_app/answer/
 ```
 
+### Try it:
 
+To try the GET /questions endpoint, try:
+```bash
+curl http://localhost:8000/biology_api_app/questions/
+```
+
+To try the Post /answer endpoint, try:
+```bash
+curl http://localhost:8000/biology_api_app/questions/
+```
 
 
 
