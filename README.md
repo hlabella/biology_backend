@@ -30,7 +30,7 @@ docker build -t biology-api-app-repository .
 docker run -p 8000:8000 biology-api-app-repository
 ```
 
-3. Open `https://localhost:8000` in the browser
+3. `https://localhost:8000` should be up and running.
 
 ## Dockerhub Image:
 
@@ -45,6 +45,8 @@ Then run the container:
 ```bash
 docker run -d --name biology-api-app-repository -p 8000:8000 hlabellacosta/biology-api-app-repository:latest
 ```
+
+`https://localhost:8000` should be up and running.
 
 ### Try it:
 
