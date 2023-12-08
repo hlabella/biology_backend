@@ -46,31 +46,20 @@ Then run the container:
 docker run -d --name biology-api-app-repository -p 8000:8000 hlabellacosta/biology-api-app-repository:latest
 ```
 
+### Try it:
 
-### Accessing the Application
+On windows powershell, you can try the API: 
 
 GET /questions endpoint: 
 ```bash
-https://localhost:8000/biology_api_app/questions/
+curl http://localhost:8000/biology_api_app/questions/
 ```
 
 POST /answer endpoint: 
 ```bash
-https://localhost:8000/biology_api_app/answer/
+curl.exe -H "Content-Type: application/json" -d '{\"question_id\": \"6512e2b5fd7b465b02516710\", \"submitted_answer\": \"favorecem a adapta\u00e7\u00e3o de plantas lenhosas madeireiras.\"}' 'http://localhost:8000/biology_api_app/answer/'
+
 ```
-
-### Try it:
-
-To try the GET /questions endpoint, try:
-```bash
-curl http://localhost:8000/biology_api_app/questions/
-```
-
-To try the Post /answer endpoint, try:
-```bash
-curl http://localhost:8000/biology_api_app/questions/
-```
-
 
 
 ## Local Setup - if you need to change database or test:
@@ -115,19 +104,28 @@ python manage.py test
 ### Deploying to Azure
 
 Configure deploy.sh
+
 Ensure you have Docker installed on your machine.
+
 Install the Azure CLI and log in to your Azure account using az login.
+
 Create an Azure Container Registry (ACR) and have its name handy.
+
 Have the deploy.sh script in your project's root directory.
-Steps to Deploy
+
+Steps to Deploy:
+
 Open Terminal or Command Prompt:
 Navigate to your project's root directory where the deploy.sh script is located.
 
 Make the Script Executable (if on Unix/Linux/Mac):
+```bash
 chmod +x deploy.sh
-
+```
 Execute the script by typing:
+```bash
 ./deploy.sh
+```
 
 This will start the deployment process.
 
@@ -157,6 +155,14 @@ Once deployed, you will have the URL and you can use the endpoints
 
 # Check it out:
 
-http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io:8000/biology_api_app/questions/
-http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io:8000/biology_api_app/answer/
+GET endpoint: http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io:8000/biology_api_app/questions/
+
+```bash
+curl http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io:8000/biology_api_app/questions/
+```
+
+POST endpoint: 'http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io:8000/biology_api_app/answer/'
+```bash
+curl.exe -H "Content-Type: application/json" -d '{\"question_id\": \"6512e2b5fd7b465b02516710\", \"submitted_answer\": \"favorecem a adapta\u00e7\u00e3o de plantas lenhosas madeireiras.\"}' 'http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io:8000/biology_api_app/answer/'
+```
 
