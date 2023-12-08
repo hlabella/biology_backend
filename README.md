@@ -15,32 +15,77 @@
 -- Correct Answer: Provides the correct answer for learning purposes.
 -- Video Resolution: Offers an optional video explanation, allowing users to understand the rationale behind the correct answer, thereby enriching the learning experience.
 
-## Prerequisites
 
-- Python
-- Docker and login to your Docker Account.
-- Azure CLI and login to your Azure account.
+## Docker Setup
 
-## Local Setup
+1. Build the container image:
+
+```bash
+docker build -t biology-api-app-repository .
+```
+
+2. Run the container:
+
+```bash
+docker run -p 8000:8000 biology-api-app-repository
+```
+
+3. Open `https://localhost:8000` in the browser
+
+### Accessing the Application
+
+GET /questions endpoint: 
+```bash
+https://localhost:8000/biology_api_app/questions/
+```
+
+POST /answer endpoint: 
+```bash
+https://localhost:8000/biology_api_app/answer/
+```
+
+
+
+
+
+## Local Setup - if you need to change database or test:
 
 To start development server at http://127.0.0.1:8000/
+
+```bash
 python manage.py runserver
+```
 
 The api will be available at:
+
 GET /127.0.0.1:8000/biology_api_app/questions
+
 POST /127.0.0.1:8000/biology_api_app/answer
 
 The database can be re-built using:
 
-"python manage.py import_questions ENEM_biologia.questions.json"
+```bash
+python manage.py import_questions ENEM_biologia.questions.json
+```
 
 To change the database, just change the .json file and run again. It will delete every entry and recreate from scratch.
 
-
-## Tests
+### Tests
 
 Tests can be run with
-"python manage.py test"
+
+```bash
+python manage.py test
+```
+
+
+## Cloud Deployment
+
+### Prerequisites
+
+- Python
+- Docker and login to your Docker Account.
+- Azure CLI and login to your Azure account.
 
 ### Deploying to Azure
 
@@ -61,7 +106,7 @@ Execute the script by typing:
 
 This will start the deployment process.
 
-## Deployment steps:
+### Deployment steps:
 
 Define Variables:
 The script starts by defining several variables used throughout the deployment process, such as image name, container name, resource group, registry name, and port number.
@@ -81,7 +126,7 @@ The tagged image is pushed to your Azure Container Registry using docker push. T
 Deploy the Image to Azure Container Instances (ACI):
 Finally, the script uses the az container create command to deploy the image to Azure Container Instances. This command specifies the resource group, container name, image to use (from ACR), DNS name label, ports, and IP address settings. It creates a container instance that runs your application and makes it accessible over the internet.
 
-## Accessing the Application
+### Accessing the Application
 
 Once deployed, you will have the URL and you can use the endpoints
 
