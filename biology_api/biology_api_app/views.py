@@ -19,10 +19,22 @@ def get_questions(request):
     # Fetch random questions
     random_questions = Question.objects.order_by('?')[:NUMBER_OF_QUESTIONS]
 
-    # Serialize the random questions
-    serialized_questions = serializers.serialize('json', random_questions)
+    questions_data = []
+    for question in random_questions:
+        choices = question.choices.all() 
+        question_dict = {
+            'id': question.id,
+            'text': question.text,
+            'choices': [{'id': choice.id, 'text': choice.text} for choice in choices],
+            'focos': question.focos,
+            'image': question.image, 
+            'video_resolution': question.video_resolution, 
+            'discipline': question.discipline, 
+            'thematic': question.thematic
+        }
+        questions_data.append(question_dict)
 
-    return JsonResponse(serialized_questions, safe=False, content_type='application/json')
+    return JsonResponse(questions_data, safe=False, content_type='application/json')
 
 #post answer view:
 
