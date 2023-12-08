@@ -33,8 +33,7 @@ share/python-wheels/
 *.log
 *.pot
 *.pyc
-db.sqlite3
-db.sqlite3-journal  
+
 
 # Virtual environment
 biologyapienv/

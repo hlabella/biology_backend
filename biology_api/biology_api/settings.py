@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-kgtw1n4gq3(qeq6-u+pl78kz#@f@0kpl4(f6(wg7nw3t8re=z$"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'http://biology-api-app.cuggbpbhetg7fncv.brazilsouth.azurecontainer.io/']
 
 # Application definition
 

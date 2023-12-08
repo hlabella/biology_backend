@@ -42,6 +42,8 @@ def get_questions(request):
 @require_http_methods(["POST"])
 def submit_answer(request):
     try:
+
+        #the date posted should contain the question_id and the submitted answer, which is enough to give the feedback:
         data = json.loads(request.body)
         question_id = data['question_id']
         submitted_answer = data['submitted_answer']
